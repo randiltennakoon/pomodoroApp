@@ -1,11 +1,29 @@
-const startingMinutes = 10;  //10
-let time = startingMinutes * 60;
+//const startingMinutes = 1;  //10
 
-const countdownEl = document.getElementById('countdown');
-const countdownCompleted = document.getElementById('completed');
+
+function startTimer() {
+
+    // validate whether the input fiels is empty
+    var x = document.getElementById('userInputMinutes').value;
+    if (x == "") {
+        alert("Minutes cannot be empty !");
+        return false;
+    }
+
+    // getting user input minutes
+    var getUserInput = document.getElementById("userInputMinutes");
+    const startingMinutes = getUserInput.value;
+
+    console.log(startingMinutes);
+
+
+    let time = startingMinutes * 60;
+
+    const countdownEl = document.getElementById('countdown');
+    const countdownCompleted = document.getElementById('completed');
+
 
 var timer = setInterval(updateCountdown, 1000);
-
 
 function updateCountdown() {
     let minutes = Math.floor(time / 60);
@@ -28,4 +46,44 @@ function updateCountdown() {
         countdownEl.innerHTML = `${minutes}:${seconds}`;
     }
 
+    $('.pauseBtn').click(function() {
+        clearInterval(timer);
+        console.log("Timer Paused");
+    });
+
+
+    $('.resetBtn').click(function() {
+        clearInterval(timer);
+
+        var pausedMin = Math.floor((startingMinutes * 60) / 60); 
+        var pausedSec =(startingMinutes * 60) % 60;
+
+        console.log(pausedMin, pausedSec);
+
+        pausedSec = pausedSec < 10 ? '0' + pausedSec : pausedSec;
+        if(pausedMin < 10){
+            pausedMin = '0' + pausedMin;
+        }
+        countdownEl.innerHTML = `${pausedMin}:${pausedSec}`;
+        console.log("Timer Reset");
+    });
+
 }
+
+
+}
+
+$(document).ready(function(){
+    $(".startBtn").click(function(){
+      //$("#userSetMinutues").hide();
+    });
+});
+
+// $(document).ready(function(){
+//     $(".resetBtn").click(function(){
+//       //$("#userSetMinutues").show();
+//       //$('input[type="text"]').val('');
+//     });
+// });
+
+

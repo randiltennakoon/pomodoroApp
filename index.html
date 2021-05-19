@@ -15,10 +15,11 @@
 
 <!-- Tab title -->
     <title>Pomodoro App</title>
-
 <!-- Tab icon -->
     <link rel="shortcut icon" href="images/icon.png" />
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -46,11 +47,32 @@
                 
                 <div class="card" style="margin-left: 10px; margin-right: 10px;">
                     <div class="card-body">
-                        <p class="card-text display-1 font-weight-bold number" id="countdown"></p>
+
+                        <div id="userSetMinutues">
+
+                            <label>Set Minutes</label>
+                            <input id="userInputMinutes" type="text" value=""/>
+
+                        </div>
+                    
+
+
+                        <p class="card-text display-1 font-weight-bold number" id="countdown">
+                            <!-- <input id="userInputMinutes" type="text"  /> -->
+    
+                        </p>
                         <p class="text-center text-uppercase text-danger display-4 font-weight-bold" id="completed"></p>
                         
                         <div class="text-center">
-                            <button type="button" class="btn btn-primary btn-lg" style="padding-left: 20px; padding-right: 20px;">START</button>
+                            <button type="button" class="btn btn-primary btn-lg startBtn" style="padding-left: 20px; padding-right: 20px;" onclick="startTimer()">START</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-primary btn-lg pauseBtn" style="padding-left: 20px; padding-right: 20px;">PAUSE</button>
+                            &nbsp;
+
+                            <button type="button" class="btn btn-primary btn-lg resetBtn" style="padding-left: 20px; padding-right: 20px;" onclick="document.getElementById('userInputMinutes').value = ''">RESET</button>
+                        
+
+                        
                         </div>
 
                     </div>

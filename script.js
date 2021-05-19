@@ -16,7 +16,7 @@ function updateCountdown() {
         minutes = '0' + minutes;
     }
 
-    countdownEl.innerHTML = `${minutes}: ${seconds}`;
+    countdownEl.innerHTML = `${minutes}:${seconds}`;
     time --;
 
     if(minutes == '0' + 0 && seconds == '0' + 0) {
@@ -25,7 +25,7 @@ function updateCountdown() {
         countdownCompleted.innerHTML = "Time's Up";
         console.log("Done");
 
-        countdownEl.innerHTML = `${minutes}: ${seconds}`;
+        countdownEl.innerHTML = `${minutes}:${seconds}`;
     }
 
 }

@@ -51,16 +51,34 @@
                         <div id="userSetMinutues">
 
                             <label>Set Minutes</label>
-                            <input id="userInputMinutes" type="text" value=""/>
+                            <input id="userInputMinutes" type="text" />
 
                         </div>
                     
 
+                        <div id="countdown_div"></div>
+                        <div id="startBtnMsg" style="display: none;">
+                            <p>To start, click "START" button</p>
+                        </div>
 
+                        <div id="instructionBtn" style="display: none;">
+                            <p>Click "PAUSE" to pause the timer & "RESET" to enter a new input</p>
+                        </div>
+
+                        <div id="pauseBtnMsg" style="display: none;">
+                            <p>To resume, click "RESUME" button</p>
+                        </div>
+
+                        <div id="resetBtnMsg" style="display: none;">
+                            <p>Enter a new input, to start the timer</p>
+                        </div>
+
+                        
                         <p class="card-text display-1 font-weight-bold number" id="countdown">
-                            <!-- <input id="userInputMinutes" type="text"  /> -->
-    
+
                         </p>
+                     
+
                         <p class="text-center text-uppercase text-danger display-4 font-weight-bold" id="completed"></p>
                         
                         <div class="text-center">

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@1,200&display=swap');
 
-body {
+/* body {
     font-family: 'KoHo', sans-serif;
     margin: 0;
 }
@@ -13,4 +13,13 @@ p {
     display: inline-flex;
     height: 70px;
     width: 200px;
+} */
+
+.main-heading{
+    font-family: 'Libre Baskerville', serif;
 }
+
+.number{
+    font-family: 'Trirong', serif;
+}
+

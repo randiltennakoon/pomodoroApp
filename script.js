@@ -6,6 +6,9 @@
     // $("#resetBtnMsg").hide();
 
 
+// globale variables
+// var timer;  // variable for countdown-time loop
+
 
 // display user input as he/she writes
 var inputBox = document.getElementById('userInputMinutes');
@@ -14,8 +17,7 @@ inputBox.onkeyup = function(){
     $("#startBtnMsg").show();
 }
 
-// globale variables
-var timer;  // variable for countdown-time loop
+
 
 function startTimer() {
     $("#completed").hide();
@@ -38,12 +40,12 @@ function startTimer() {
     // assigning user set Minutes to 'time' local variable
     let time = startingMinutes * 60;
 
-    window.countdownEl = document.getElementById('countdown');
+    window.countdownEl = document.getElementById('countdown'); // added window. to make the variable global
     //const countdownCompleted = document.getElementById('completed'); - no need
 
 
     // run 'updateCountdown' function at every 1 sec
-    timer = setInterval(updateCountdown, 1000); 
+    window.timer = setInterval(updateCountdown, 1000); 
 
 
 

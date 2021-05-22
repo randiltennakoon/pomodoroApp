@@ -58,20 +58,19 @@
 
                         <div id="countdown_div"></div>
                         <div id="startBtnMsg" style="display: none;">
-                            <p>To start, click "START" button</p>
+                            <p class="text-muted">To start, click "START" button</p>
                         </div>
 
                         <div id="instructionBtnMsg" style="display: none;">
-                            <p>Click "PAUSE" to pause the timer & "RESET" to enter a new input</p>
+                            <p class="text-muted">Click "PAUSE" to pause the timer & "RESET" to enter a new input</p>
                         </div>
 
                         <div id="pauseResumeBtnMsg" style="display: none;">
-                            <p>To resume, click "RESUME" button</p>
-                            <p>Click "RESET", to quit the timer</p>
+                            <p class="text-muted">To resume, click "RESUME" button <br /> Click "RESET", to quit the timer</p>
                         </div>
 
                         <div id="resetBtnMsg" style="display: none;">
-                            <p>Enter a new input, to start the timer</p>
+                            <p class="text-muted">Enter a new input, to start the timer</p>
                         </div>
 
                         
@@ -85,7 +84,12 @@
                         </p>
                         
                         <div class="text-center">
-                            <button type="button" class="btn btn-primary btn-lg startBtn" style="padding-left: 20px; padding-right: 20px;" onclick="startTimer()">START</button>
+                            <button type="button" class="btn btn-primary btn-lg startBtn" style="padding-left: 20px; padding-right: 20px;" onclick="startTimer()">
+                                START
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg startNewTaskBtn" style="padding-left: 20px; padding-right: 20px; display: none;">
+                                START A NEW TASK
+                            </button>
                             &nbsp;
                             <button type="button" class="btn btn-primary btn-lg pauseResumeBtn" style="padding-left: 20px; padding-right: 20px; display: none;">
                                 PAUSE

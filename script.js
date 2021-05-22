@@ -3,7 +3,7 @@
 // globale variables
 // var timer;  // variable for countdown-time loop
 var userGuideMsg;
-
+var buttonText;
 
 // display user input as he/she writes
 var inputBox = document.getElementById('userInputMinutes');
@@ -19,9 +19,15 @@ function startTimer() {
     $('#countdown_div').show();
     
     // validate whether the user input is non-empty && a number
-    window.x = document.getElementById('userInputMinutes').value;
+    var x = document.getElementById('userInputMinutes').value;
     if (x == "" || isNaN(x)) {
         alert("Minutes cannot be empty & must be a number !");
+        return false;
+    }
+
+    // validate whether the user input is in between 1 & 120
+    if(!(x >= 1) || !(x <= 120)){
+        alert("number must be in between 1 and 120");
         return false;
     }
 
@@ -57,6 +63,7 @@ function startTimer() {
         countdownEl.innerHTML = `${minutes}:${seconds}`;
         time --;
 
+        // check whether the timer has completed
         if(minutes == '0' + 0 && seconds == '0' + 0) {
             console.log(minutes, seconds);
             clearInterval(timer);
@@ -128,30 +135,47 @@ $('.pauseResumeBtn').click(function() {
     userGuideMsg = document.getElementById('completed');
 
     
-    var $this = $(this);
-    $this.toggleClass('pauseResumeBtn');
-    if($this.hasClass('pauseResumeBtn')){
-        $this.text('PAUSE');
+    buttonText = ($(this).text() == 'RESUME') ? 'PAUSE':'RESUME';
+    $(this).text(buttonText);
+    
+    console.log(buttonText);
+
+    if(buttonText == 'PAUSE') {
         userGuideMsg.innerHTML = "";
-        console.log("timer resumed");			
+        console.log("timer resumed");
     } else {
-        $this.text('RESUME');
         userGuideMsg.innerHTML = "timer paused";
-        console.log("timer paused"); 
-    }    
+        console.log("timer paused");    
+    }
+
+    
+    // var $this = $(this);
+    // $this.toggleClass('pauseResumeBtn');
+    // if($this.hasClass('pauseResumeBtn')){
+    //     $this.text('PAUSE');
+    //     userGuideMsg.innerHTML = "";
+    //     console.log("timer resumed");			
+    // } else {
+    //     $this.text('RESUME');
+    //     userGuideMsg.innerHTML = "timer paused";
+    //     console.log("timer paused"); 
+    // } 
+
+    
+    
+    
+    // $(document).ready(function() {      // STILL NEEDS TO BE FIXED
+    //     $('.pauseResumeBtn').click(function(){
+            // console.log('pause button clicked');
+            // $(this).text(function(i, text){
+            //     //return text === "PAUSE" ? "RESUME" : "PAUSE";
+            //     $this.text('PAUSE');
+            // });
+    //     });
+    // });
      
 
 });
-
-
-// $(document).ready(function() {      // STILL NEEDS TO BE FIXED
-//     $('.pauseResumeBtn').click(function(){
-//         console.log('pause button clicked');
-//         $(this).text(function(i, text){
-//             return text === "PAUSE" ? "RESUME" : "PAUSE";
-//         });
-//     });
-// });
 
 
 // - - - -  - - --  - - --  -
@@ -178,7 +202,7 @@ $('.resetBtn').click(function() {
     // $("#userSetMinutues").show();
     $('input[type="text"]').val('');
     $('#countdown_div').hide();
-    
+
     
 });
 

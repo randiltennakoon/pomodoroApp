@@ -2,12 +2,13 @@
 
     // $("#startBtnMsg").hide();
     // $("#instructionBtn").show();
-    // $("#pauseBtnMsg").hide();
+    // $("#pauseResumeBtnMsg").hide();
     // $("#resetBtnMsg").hide();
 
 
 // globale variables
 // var timer;  // variable for countdown-time loop
+var userGuideMsg;
 
 
 // display user input as he/she writes
@@ -20,10 +21,11 @@ inputBox.onkeyup = function(){
 
 
 function startTimer() {
-    $("#completed").hide();
+    //$("#completed").hide();
+    $('#countdown_div').show();
     
     // validate whether the user input is non-empty && a number
-    var x = document.getElementById('userInputMinutes').value;
+    window.x = document.getElementById('userInputMinutes').value;
     if (x == "" || isNaN(x)) {
         alert("Minutes cannot be empty & must be a number !");
         return false;
@@ -64,22 +66,30 @@ function startTimer() {
         if(minutes == '0' + 0 && seconds == '0' + 0) {
             console.log(minutes, seconds);
             clearInterval(timer);
-            //countdownCompleted.innerHTML = "Time's Up"; - no need
-            $("#completed").show();
+
+            userGuideMsg = document.getElementById('completed');
+            userGuideMsg.innerHTML = "time's up";
+
+            console.log(userGuideMsg);
+            //$("#completed").show();
             console.log("Done");
 
             countdownEl.innerHTML = `${minutes}:${seconds}`;
 
             $("#instructionBtnMsg").hide();
             $("#userSetMinutues").show();
+            $(".pauseResumeBtn").hide();
+            $(".resetBtn").hide();
             $('input[type="text"]').val('');
+            $(".startBtn").attr("disabled", false)
         }
 
     }
 
+    //$(".startBtn").hide();
     $("#startBtnMsg").hide();
     $("#instructionBtnMsg").show();
-    // $("#pauseBtnMsg").hide();
+    // $("#pauseResumeBtnMsg").hide();
     $("#resetBtnMsg").hide();
 
 
@@ -96,9 +106,11 @@ function startTimer() {
 //jQuery part
 $(document).ready(function(){
     $(".startBtn").click(function(){
-      $("#userSetMinutues").hide();     // hiding user input
-      $(".pauseResumeBtn").show();  // enable pause/resume button
-      $(".resetBtn").show();    // enable reset button
+        //$(".startBtn").hide();
+        $(".startBtn").attr("disabled", true);
+        $("#userSetMinutues").hide();     // hiding user input
+        $(".pauseResumeBtn").show();  // enable pause/resume button
+        $(".resetBtn").show();    // enable reset button
     });
 });
 
@@ -108,7 +120,7 @@ $(document).ready(function(){
 $('.pauseResumeBtn').click(function() {
     clearInterval(timer);
     $("#instructionBtnMsg").hide();
-    $("#pauseBtnMsg").show();
+    $("#pauseResumeBtnMsg").show();
     console.log("Timer Paused");
 });
 
@@ -129,8 +141,17 @@ $('.resetBtn').click(function() {
     clearInterval(timer);
     $("#userSetMinutues").show();
     $("#instructionBtnMsg").hide();
-    $("#pauseBtnMsg").hide();
+    $("#pauseResumeBtnMsg").hide();
     $("#resetBtnMsg").show();
+    //$(".startBtn").show();
+
+    $(".startBtn").attr("disabled", false);
+    $(".pauseResumeBtn").hide();
+    $(".resetBtn").hide();
+    userGuideMsg = document.getElementById('completed');
+    userGuideMsg.innerHTML = "";
+    
+    
 
     // var pausedMin = Math.floor((startingMinutes * 60) / 60); 
     // var pausedMin = Math.floor(time / 60);
@@ -147,8 +168,20 @@ $('.resetBtn').click(function() {
     countdownEl.innerHTML = '00:00';
     console.log("Timer Reset");
 
-    $("#userSetMinutues").show();
+    // $("#userSetMinutues").show();
     $('input[type="text"]').val('');
+
+    $('#countdown_div').hide();
+
+
+    // x = "";
+    // console.log(x);
+    // if(x == "") {
+    //     console.log(x);
+    //     $('#countdown_div').hide();
+    // }else {
+    //     $('#countdown_div').show();
+    // }
 });
 
 // $(document).ready(function(){

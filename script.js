@@ -70,18 +70,37 @@ function startTimer() {
             userGuideMsg = document.getElementById('completed');
             userGuideMsg.innerHTML = "time's up";
 
-            console.log(userGuideMsg);
+            //console.log(userGuideMsg);
             //$("#completed").show();
-            console.log("Done");
+            console.log("timer completed");
 
             countdownEl.innerHTML = `${minutes}:${seconds}`;
 
             $("#instructionBtnMsg").hide();
-            $("#userSetMinutues").show();
+            
             $(".pauseResumeBtn").hide();
             $(".resetBtn").hide();
             $('input[type="text"]').val('');
-            $(".startBtn").attr("disabled", false)
+            //$(".startBtn").attr("disabled", false)
+            $(".startBtn").hide();
+            $(".startNewTaskBtn").show();
+
+            $(document).ready(function() {
+                $(".startNewTaskBtn").click(function() {
+                    $("#userSetMinutues").show();
+                    $(".startBtn").show();
+                    $(".startBtn").attr("disabled", false)
+                    $(".startNewTaskBtn").hide();
+
+                    userGuideMsg = document.getElementById('completed');
+                    userGuideMsg.innerHTML = "";
+                    
+                });
+            });
+                
+
+            
+            
         }
 
     }
@@ -93,7 +112,7 @@ function startTimer() {
     $("#resetBtnMsg").hide();
 
 
-    // pause the timer
+
     
 
    
@@ -121,7 +140,17 @@ $('.pauseResumeBtn').click(function() {
     clearInterval(timer);
     $("#instructionBtnMsg").hide();
     $("#pauseResumeBtnMsg").show();
-    console.log("Timer Paused");
+    userGuideMsg = document.getElementById('completed');
+    userGuideMsg.innerHTML = "timer paused";
+    console.log("timer paused");
+
+    var $this = $(this);
+    $this.toggleClass('pauseResumeBtn');
+    if($this.hasClass('pauseResumeBtn')){
+        $this.text('PAUSE');			
+    } else {
+        $this.text('RESUME');
+    }    
 });
 
 
@@ -216,4 +245,12 @@ $('.resetBtn').click(function() {
 //     }else {
 //         x.innerHTML = "PAUSE";
 //     }
+// }
+
+// var $this = $(this);
+// $this.toggleClass('startBtn');
+// if($this.hasClass('startBtn')){
+//     $this.text('START');			
+// } else {
+//     $this.text('START A NEW TASK');
 // }

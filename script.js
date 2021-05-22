@@ -178,6 +178,7 @@ $('.pauseResumeBtn').click(function() {
 });
 
 
+
 // - - - -  - - --  - - --  -
 
 
@@ -202,7 +203,11 @@ $('.resetBtn').click(function() {
     // $("#userSetMinutues").show();
     $('input[type="text"]').val('');
     $('#countdown_div').hide();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 965cf5a02d001125d22ffa10cc1fa32c1f363dca
     
 });
 

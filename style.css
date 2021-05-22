@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@1,200&display=swap');
 
+body {
+    background: #ACC6E0;
+  }
+  
+
 /* body {
     font-family: 'KoHo', sans-serif;
     margin: 0;

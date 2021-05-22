@@ -1,11 +1,5 @@
 //const startingMinutes = 1;  //10
 
-    // $("#startBtnMsg").hide();
-    // $("#instructionBtn").show();
-    // $("#pauseResumeBtnMsg").hide();
-    // $("#resetBtnMsg").hide();
-
-
 // globale variables
 // var timer;  // variable for countdown-time loop
 var userGuideMsg;
@@ -96,33 +90,22 @@ function startTimer() {
                     userGuideMsg.innerHTML = "";
                     
                 });
-            });
-                
-
-            
-            
+            });  
         }
 
     }
 
-    //$(".startBtn").hide();
     $("#startBtnMsg").hide();
     $("#instructionBtnMsg").show();
-    // $("#pauseResumeBtnMsg").hide();
     $("#resetBtnMsg").hide();
-
-
-
-    
-
-   
-
 
 }
 
 
 
 //jQuery part
+
+// start button
 $(document).ready(function(){
     $(".startBtn").click(function(){
         //$(".startBtn").hide();
@@ -133,7 +116,9 @@ $(document).ready(function(){
     });
 });
 
+
 // - - - - - - - - - - -- 
+
 
 // pause/resume button
 $('.pauseResumeBtn').click(function() {
@@ -141,16 +126,21 @@ $('.pauseResumeBtn').click(function() {
     $("#instructionBtnMsg").hide();
     $("#pauseResumeBtnMsg").show();
     userGuideMsg = document.getElementById('completed');
-    userGuideMsg.innerHTML = "timer paused";
-    console.log("timer paused");
 
+    
     var $this = $(this);
     $this.toggleClass('pauseResumeBtn');
     if($this.hasClass('pauseResumeBtn')){
-        $this.text('PAUSE');			
+        $this.text('PAUSE');
+        userGuideMsg.innerHTML = "";
+        console.log("timer resumed");			
     } else {
         $this.text('RESUME');
+        userGuideMsg.innerHTML = "timer paused";
+        console.log("timer paused"); 
     }    
+     
+
 });
 
 
@@ -163,7 +153,9 @@ $('.pauseResumeBtn').click(function() {
 //     });
 // });
 
+
 // - - - -  - - --  - - --  -
+
 
 // reset button
 $('.resetBtn').click(function() {
@@ -172,53 +164,25 @@ $('.resetBtn').click(function() {
     $("#instructionBtnMsg").hide();
     $("#pauseResumeBtnMsg").hide();
     $("#resetBtnMsg").show();
-    //$(".startBtn").show();
 
     $(".startBtn").attr("disabled", false);
-    $(".pauseResumeBtn").hide();
+    
     $(".resetBtn").hide();
+    $(".pauseResumeBtn").hide();
     userGuideMsg = document.getElementById('completed');
     userGuideMsg.innerHTML = "";
-    
-    
-
-    // var pausedMin = Math.floor((startingMinutes * 60) / 60); 
-    // var pausedMin = Math.floor(time / 60);
-    // var pausedSec = time % 60;
-
-    // console.log(pausedMin, pausedSec);
-
-    // pausedSec = pausedSec < 10 ? '0' + pausedSec : pausedSec;
-    // if(pausedMin < 10){
-    //     pausedMin = '0' + pausedMin;
-    // }
-    // countdownEl.innerHTML = `${pausedMin}:${pausedSec}`;
 
     countdownEl.innerHTML = '00:00';
     console.log("Timer Reset");
 
     // $("#userSetMinutues").show();
     $('input[type="text"]').val('');
-
     $('#countdown_div').hide();
-
-
-    // x = "";
-    // console.log(x);
-    // if(x == "") {
-    //     console.log(x);
-    //     $('#countdown_div').hide();
-    // }else {
-    //     $('#countdown_div').show();
-    // }
+    
+    
 });
 
-// $(document).ready(function(){
-//     $(".resetBtn").click(function(){
-//       //$("#userSetMinutues").show();
-//       //$('input[type="text"]').val('');
-//     });
-// });  
+
 
   
     
@@ -254,3 +218,11 @@ $('.resetBtn').click(function() {
 // } else {
 //     $this.text('START A NEW TASK');
 // }
+
+
+// $(document).ready(function(){
+//     $(".resetBtn").click(function(){
+//       //$("#userSetMinutues").show();
+//       //$('input[type="text"]').val('');
+//     });
+// });  

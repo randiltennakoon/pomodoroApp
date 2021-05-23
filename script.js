@@ -4,6 +4,10 @@
 // var timer;  // variable for countdown-time loop
 var userGuideMsg;
 var buttonText;
+//window.updateCountdown = function() {};
+// var pause = false;
+
+
 
 // display user input as he/she writes
 var inputBox = document.getElementById('userInputMinutes');
@@ -49,9 +53,9 @@ function startTimer() {
     // run 'updateCountdown' function at every 1 sec
     window.timer = setInterval(updateCountdown, 1000); 
 
-
-
+   
     function updateCountdown() {
+        
         let minutes = Math.floor(time / 60);
         let seconds = time % 60;
 
@@ -79,7 +83,7 @@ function startTimer() {
 
             $("#instructionBtnMsg").hide();
             
-            $(".pauseResumeBtn").hide();
+            $(".pauseBtn").hide();
             $(".resetBtn").hide();
             $('input[type="text"]').val('');
             //$(".startBtn").attr("disabled", false)
@@ -102,6 +106,23 @@ function startTimer() {
 
     }
 
+    $('.resumeBtn').click(function() {
+
+        $("#instructionBtnMsg").show();
+        $("#pauseBtnMsg").hide();
+
+
+        $('.pauseBtn').show();
+        $('.resumeBtn').hide();
+    
+        userGuideMsg = document.getElementById('completed');
+        userGuideMsg.innerHTML = "";
+        timer = setInterval(updateCountdown, 1000); 
+        console.log("timer resumed"); 
+    
+    });
+
+
     $("#startBtnMsg").hide();
     $("#instructionBtnMsg").show();
     $("#resetBtnMsg").hide();
@@ -118,7 +139,7 @@ $(document).ready(function(){
         $(".startBtn").hide();
         //$(".startBtn").attr("disabled", true);
         $("#userSetMinutues").hide();     // hiding user input
-        $(".pauseResumeBtn").show();  // enable pause/resume button
+        $(".pauseBtn").show();  // enable pause/resume button
         $(".resetBtn").show();    // enable reset button
     });
 });
@@ -128,52 +149,43 @@ $(document).ready(function(){
 
 
 // pause/resume button
-$('.pauseResumeBtn').click(function() {
-    clearInterval(timer);
+// $('.pauseBtn').click(function() {
+//     //clearInterval(timer);
+//     $("#instructionBtnMsg").hide();
+//     $("#pauseBtnMsg").show();
+    
+//     userGuideMsg = document.getElementById('completed');
+
+//     buttonText = ($(this).text() == 'RESUME') ? 'PAUSE':'RESUME';
+//     $(this).text(buttonText);
+
+//     //buttonText = ($(this).text() == 'RESUME') //false - PAUSE
+//     console.log(buttonText);
+    
+//     if(buttonText == 'PAUSE') {
+//         $("#instructionBtnMsg").show();
+//         $("#pauseBtnMsg").hide();
+//         userGuideMsg.innerHTML = "";
+//         console.log("timer resumed");
+//     }else {
+//         userGuideMsg.innerHTML = "timer paused";
+//         clearInterval(timer);
+//         console.log("timer paused");    
+//     }
+
+// });
+
+$('.pauseBtn').click(function() {
+
     $("#instructionBtnMsg").hide();
-    $("#pauseResumeBtnMsg").show();
+    $("#pauseBtnMsg").show();
+    $(".pauseBtn").hide();
+    $(".resumeBtn").show();
+
     userGuideMsg = document.getElementById('completed');
-
-    
-    buttonText = ($(this).text() == 'RESUME') ? 'PAUSE':'RESUME';
-    $(this).text(buttonText);
-    
-    console.log(buttonText);
-
-    if(buttonText == 'PAUSE') {
-        userGuideMsg.innerHTML = "";
-        console.log("timer resumed");
-    } else {
-        userGuideMsg.innerHTML = "timer paused";
-        console.log("timer paused");    
-    }
-
-    
-    // var $this = $(this);
-    // $this.toggleClass('pauseResumeBtn');
-    // if($this.hasClass('pauseResumeBtn')){
-    //     $this.text('PAUSE');
-    //     userGuideMsg.innerHTML = "";
-    //     console.log("timer resumed");			
-    // } else {
-    //     $this.text('RESUME');
-    //     userGuideMsg.innerHTML = "timer paused";
-    //     console.log("timer paused"); 
-    // } 
-
-    
-    
-    
-    // $(document).ready(function() {      // STILL NEEDS TO BE FIXED
-    //     $('.pauseResumeBtn').click(function(){
-            // console.log('pause button clicked');
-            // $(this).text(function(i, text){
-            //     //return text === "PAUSE" ? "RESUME" : "PAUSE";
-            //     $this.text('PAUSE');
-            // });
-    //     });
-    // });
-     
+    userGuideMsg.innerHTML = "timer paused";
+    clearInterval(timer);
+    console.log("timer paused"); 
 
 });
 
@@ -186,14 +198,15 @@ $('.resetBtn').click(function() {
     clearInterval(timer);
     $("#userSetMinutues").show();
     $("#instructionBtnMsg").hide();
-    $("#pauseResumeBtnMsg").hide();
+    $("#pauseBtnMsg").hide();
     $("#resetBtnMsg").show();
 
     //$(".startBtn").attr("disabled", false);
     $('.startBtn').show();
     
     $(".resetBtn").hide();
-    $(".pauseResumeBtn").hide();
+    $(".pauseBtn").hide();
+    $(".resumeBtn").hide();
     userGuideMsg = document.getElementById('completed');
     userGuideMsg.innerHTML = "";
 
@@ -205,6 +218,9 @@ $('.resetBtn').click(function() {
     $('#countdown_div').hide();
 
     
+    
+    //console.log(buttonText);
+ 
 });
 
 
@@ -251,3 +267,29 @@ $('.resetBtn').click(function() {
 //       //$('input[type="text"]').val('');
 //     });
 // });  
+
+
+// var $this = $(this);
+    // $this.toggleClass('pauseBtn');
+    // if($this.hasClass('pauseBtn')){
+    //     $this.text('PAUSE');
+    //     userGuideMsg.innerHTML = "";
+    //     console.log("timer resumed");			
+    // } else {
+    //     $this.text('RESUME');
+    //     userGuideMsg.innerHTML = "timer paused";
+    //     console.log("timer paused"); 
+    // } 
+
+    
+    
+    
+    // $(document).ready(function() {      // STILL NEEDS TO BE FIXED
+    //     $('.pauseBtn').click(function(){
+            // console.log('pause button clicked');
+            // $(this).text(function(i, text){
+            //     //return text === "PAUSE" ? "RESUME" : "PAUSE";
+            //     $this.text('PAUSE');
+            // });
+    //     });
+    // });

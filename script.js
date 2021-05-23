@@ -21,19 +21,39 @@ inputBox.onkeyup = function(){
 function startTimer() {
     //$("#completed").hide();
     $('#countdown_div').show();
-    
-    // validate whether the user input is non-empty && a number
+
+
+    // validate user input
     var x = document.getElementById('userInputMinutes').value;
-    if (x == "" || isNaN(x)) {
-        alert("Minutes cannot be empty & must be a number !");
+    if(x == ""){
+        alert("Minutes cannot be empty !");
+        //$('#validate_error').show();
+        return false;
+    }else if(isNaN(x)){
+        alert("You should enter a number for Minutes...");
+        return false;
+    }else if(!(x >= 1) || !(x <= 120)){
+        alert("Number must be in between 1 and 120");
         return false;
     }
 
-    // validate whether the user input is in between 1 & 120
-    if(!(x >= 1) || !(x <= 120)){
-        alert("number must be in between 1 and 120");
-        return false;
-    }
+
+    
+    // validate whether the user input is non-empty && a number
+    // var x = document.getElementById('userInputMinutes').value;
+    // if (x == "" || isNaN(x)) {
+    //     alert("Minutes cannot be empty & must be a number !");
+    //     $("#startBtnMsg").hide();
+    //     return false;
+
+    // }
+
+    // // validate whether the user input is in between 1 & 120
+    // if(!(x >= 1) || !(x <= 120)){
+    //     alert("number must be in between 1 and 120");
+    //     $("#startBtnMsg").hide();
+    //     return false;
+    // }
 
 
     // getting user input minutes

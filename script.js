@@ -90,7 +90,7 @@ function startTimer() {
                 $(".startNewTaskBtn").click(function() {
                     $("#userSetMinutues").show();
                     $(".startBtn").show();
-                    $(".startBtn").attr("disabled", false)
+                    //$(".startBtn").attr("disabled", false)
                     $(".startNewTaskBtn").hide();
 
                     userGuideMsg = document.getElementById('completed');
@@ -115,8 +115,8 @@ function startTimer() {
 // start button
 $(document).ready(function(){
     $(".startBtn").click(function(){
-        //$(".startBtn").hide();
-        $(".startBtn").attr("disabled", true);
+        $(".startBtn").hide();
+        //$(".startBtn").attr("disabled", true);
         $("#userSetMinutues").hide();     // hiding user input
         $(".pauseResumeBtn").show();  // enable pause/resume button
         $(".resetBtn").show();    // enable reset button
@@ -189,7 +189,8 @@ $('.resetBtn').click(function() {
     $("#pauseResumeBtnMsg").hide();
     $("#resetBtnMsg").show();
 
-    $(".startBtn").attr("disabled", false);
+    //$(".startBtn").attr("disabled", false);
+    $('.startBtn').show();
     
     $(".resetBtn").hide();
     $(".pauseResumeBtn").hide();

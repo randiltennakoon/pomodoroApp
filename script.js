@@ -21,6 +21,7 @@ inputBox.onkeyup = function(){
 function startTimer() {
     //$("#completed").hide();
     $('#countdown_div').show();
+    $('#countdown').show();
 
 
     // validate user input
@@ -100,28 +101,29 @@ function startTimer() {
             console.log("timer completed");
 
             countdownEl.innerHTML = `${minutes}:${seconds}`;
-
-            $("#instructionBtnMsg").hide();
             
+            $("#instructionBtnMsg").hide();
             $(".pauseBtn").hide();
             $(".resetBtn").hide();
             $('input[type="text"]').val('');
             //$(".startBtn").attr("disabled", false)
             $(".startBtn").hide();
             $(".startNewTaskBtn").show();
+            $('#countdown').hide();
 
-            $(document).ready(function() {
-                $(".startNewTaskBtn").click(function() {
-                    $("#userSetMinutues").show();
-                    $(".startBtn").show();
-                    //$(".startBtn").attr("disabled", false)
-                    $(".startNewTaskBtn").hide();
+            // $(document).ready(function() {
+            //     $(".startNewTaskBtn").click(function() {
+            //         $("#userSetMinutues").show();
+            //         $(".startBtn").show();
+            //         $('#completed').hide();
+            //         //$(".startBtn").attr("disabled", false)
+            //         $(".startNewTaskBtn").hide();
 
-                    userGuideMsg = document.getElementById('completed');
-                    userGuideMsg.innerHTML = "";
+            //         userGuideMsg = document.getElementById('completed');
+            //         userGuideMsg.innerHTML = "";
                     
-                });
-            });  
+            //     });
+            // });  
         }
 
     }
@@ -134,12 +136,13 @@ function startTimer() {
 
         $('.pauseBtn').show();
         $('.resumeBtn').hide();
+        $('.resetBtn').show();
     
         userGuideMsg = document.getElementById('completed');
         userGuideMsg.innerHTML = "";
         timer = setInterval(updateCountdown, 1000); 
         console.log("timer resumed"); 
-    
+
     });
 
 
@@ -147,7 +150,28 @@ function startTimer() {
     $("#instructionBtnMsg").show();
     $("#resetBtnMsg").hide();
 
+
+    // $(".startNewTaskBtn").click(function() {
+    //     $("#userSetMinutues").show();
+    //     $(".startBtn").show();
+    //     $('#countdown').hide();
+    //     $(".startNewTaskBtn").hide();
+    //     $('#countdown_div').hide();
+    
+    //     userGuideMsg = document.getElementById('completed');
+    //     userGuideMsg.innerHTML = "";
+    
+    //     clearInterval(timer);
+    //     timer = setInterval(updateCountdown, 1000); 
+    
+        
+    
+    // });
+
+
+
 }
+
 
 
 
@@ -164,6 +188,22 @@ $(document).ready(function(){
     });
 });
 
+
+$(".startNewTaskBtn").click(function() {
+    $("#userSetMinutues").show();
+    $(".startBtn").show();
+    $('#countdown').hide();
+    $(".startNewTaskBtn").hide();
+    $('#countdown_div').hide();
+
+    userGuideMsg = document.getElementById('completed');
+    userGuideMsg.innerHTML = "";
+
+    // clearInterval(timer);
+    // timer = setInterval(updateCountdown, 1000); 
+  
+
+});
 
 // - - - - - - - - - - -- 
 
@@ -201,6 +241,7 @@ $('.pauseBtn').click(function() {
     $("#pauseBtnMsg").show();
     $(".pauseBtn").hide();
     $(".resumeBtn").show();
+    $('.resetBtn').hide();
 
     userGuideMsg = document.getElementById('completed');
     userGuideMsg.innerHTML = "timer paused";
@@ -220,6 +261,7 @@ $('.resetBtn').click(function() {
     $("#instructionBtnMsg").hide();
     $("#pauseBtnMsg").hide();
     $("#resetBtnMsg").show();
+    $('#countdown').hide();
 
     //$(".startBtn").attr("disabled", false);
     $('.startBtn').show();
@@ -230,17 +272,14 @@ $('.resetBtn').click(function() {
     userGuideMsg = document.getElementById('completed');
     userGuideMsg.innerHTML = "";
 
-    countdownEl.innerHTML = '00:00';
+    countdownEl.innerHTML = '';
     console.log("Timer Reset");
 
     // $("#userSetMinutues").show();
     $('input[type="text"]').val('');
     $('#countdown_div').hide();
 
-    
-    
-    //console.log(buttonText);
- 
+
 });
 
 
